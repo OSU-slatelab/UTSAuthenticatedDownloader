@@ -1,0 +1,47 @@
+.container {
+    margin-top: 50px;
+    max-width: 730px;
+}
+
+#auth_form_panel {
+    text-align: center;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+#auth_form_panel label {
+    width: 25%;
+    text-align: right;
+}
+#auth_form_panel input {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+#auth_form_panel .panel-body a {
+    float:left;
+}
+#autho_form_panel .panel-body form {
+    float:left;
+}
+
+.footer {
+    margin-top: 30px;
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+.footer .leftcol {
+    float:left;
+    width:50%;
+    text-align:left;
+    padding-left: 30px;
+}
+.footer .rightcol {
+    float:left;
+    width:40%;
+    text-align:right;
+}

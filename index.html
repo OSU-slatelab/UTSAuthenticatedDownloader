@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bootstrap 101 Template</title>
+
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+        <!-- Page-specific styles -->
+        <link href="stylesheet.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <p class="lead">Hi there! You're trying to download BMASS.</p>
+            <p>
+                This dataset requires that you have a valid <a href="http://uts.nlm.nih.gov">UMLS Terminology Services (UTS)</a> account.
+                If you don't already have one, you can <a href="https://uts.nlm.nih.gov//license.html">sign up for one here</a>.
+            </p>
+            <p>
+                Please enter your UTS credentials below, we'll check that they're valid, and then you'll be prompted to save the dataset.
+            </p>
+
+            <div id="login_error_message" class="panel panel-danger hidden">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Whoops!</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Looks like those account credentials aren't valid.  Please try again!</p>
+                </div>
+            </div>
+
+            <div class="panel panel-success narrow" id="auth_form_panel">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title">UTS Authentication</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="http://uts.nlm.nih.gov">
+                        <img src="https://uts.nlm.nih.gov/images/umls_tree_sm.jpg" height="86" border="0" alt="UTS Logo"></img>
+                    </a>
+                    <form action="download.cgi" method="post">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" />
+                        <br />
+
+                        <label for="password">Password:</label>
+                        <input type="password" autocomplete="off" name="password" />
+                        <br />
+
+                        <input type="submit" value="Authenticate me!"/>
+                    </form>
+                </div>
+            </div> <!-- </auth_form_panel> -->
+
+            <p class="lead">What's up with this?</p>
+            <p>
+                So we know this looks kind of sketchy; some random webpage wants your UTS credentials, right?
+                With that in mind, this interface is <a href="https://github.com/OSU-slatelab/UTSAuthenticatedDownloader">open-source on Github</a>.<br />
+            </p>
+            <p>
+                If you're not entirely comfortable entering your credentials here or have any questions, just send an email to
+                <a href="mailto:newman-griffis.1@osu.edu">newman-griffis.1@osu.edu</a>.
+            </p>
+        </div>
+
+        <footer class="footer">
+            <div class="clearfix">
+                <p class="leftcol">Maintained by <a href="http://web.cse.ohio-state.edu/slate/">the SLaTe lab</a> at <a href="http://www.osu.edu">The Ohio State University.</a></p>
+                <p class="rightcol">Built with <a href="http://getbootstrap.com">Bootstrap!</a></p>
+            </div>
+        </footer>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <!-- Page-specific scripts -->
+        <script src="magic.js"></script>
+    </body>
+</html>
