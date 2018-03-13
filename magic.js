@@ -17,4 +17,18 @@ $(document).ready(function() {
     if (query_params['status'] == 'LoginError') {
         $('#login_error_message').removeClass('hidden');
     }
+
+    dataset = query_params['dataset'];
+    if (dataset == 'Pubmed_JET') {
+        $('#dataset').text('JET embeddings');
+        $('#inp_dataset').val(dataset);
+    }
+    else if (dataset == 'UMLS_JET') {
+        $('#dataset').text('the UMLS strings file for JET');
+        $('#inp_dataset').val(dataset);
+    }
+    else if (dataset != '') {
+        $('#dataset').text(dataset);
+        $('#inp_dataset').val(dataset);
+    }
 });

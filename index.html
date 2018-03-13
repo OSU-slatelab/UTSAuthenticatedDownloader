@@ -23,7 +23,7 @@
     </head>
     <body>
         <div class="container">
-            <p class="lead">Hi there! You're trying to download BMASS.</p>
+            <p class="lead">Hi there! You're trying to download <span id="dataset">BMASS</span>.</p>
             <p>
                 This dataset requires that you have a valid <a href="http://uts.nlm.nih.gov">UMLS Terminology Services (UTS)</a> account.
                 If you don't already have one, you can <a href="https://uts.nlm.nih.gov//license.html">sign up for one here</a>.
@@ -58,6 +58,7 @@
                         <input type="password" autocomplete="off" name="password" />
                         <br />
 
+                        <input type="hidden" name="dataset" id="inp_dataset" value="BMASS" />
                         <input type="submit" value="Authenticate me!"/>
                     </form>
                 </div>

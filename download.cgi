@@ -13,8 +13,15 @@ my $UTS_API_license_key = '<PLACEHOLDER>';
 my $BMASS_file = '<PLACEHOLDER>';
 my $BMASS_size = -1;
 
+my $Pubmed_JET_file = '<PLACEHOLDER>';
+my $Pubmed_JET_size = -1;
+
+my $UMLS_JET_file = '<PLACEHOLDER>';
+my $UMLS_JET_size = -1;
+
 my $uname = param('username');
 my $passw = param('password');
+my $dataset = param('dataset');
 
 $ua = LWP::UserAgent->new;
 my $req = POST 'https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser',
@@ -22,19 +29,40 @@ my $req = POST 'https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser',
 
 my $response = $ua->request($req);
 my $status = $response -> content;
+
 $status = (split(/\>/, $status))[-1];
 $status = (split(/\</, $status))[0];
 
 if ($status eq "true") {
-    print "Content-type: application/octet-stream\n";
-    print "Accept-Ranges: bytes\n";
-    print "Content-Length: $BMASS_size\n";
-    print "Content-disposition: filename=BMASS.zip\n\n";
+    if ($dataset eq "BMASS") {
+        print "Content-type: application/octet-stream\n";
+        print "Accept-Ranges: bytes\n";
+        print "Content-Length: $BMASS_size\n";
+        print "Content-disposition: filename=BMASS.zip\n\n";
 
-    open(FIN, $BMASS_file);
-    binmode FIN;
-    print <FIN>;
+        open(FIN, $BMASS_file);
+        binmode FIN;
+        print <FIN>;
+    } elsif ($dataset eq "Pubmed_JET") {
+        print "Content-type: application/octet-stream\n";
+        print "Accept-Ranges: bytes\n";
+        print "Content-Length: $Pubmed_JET_size\n";
+        print "Content-disposition: filename=Pubmed_JET.zip\n\n";
+
+        open(FIN, $Pubmed_JET_file);
+        binmode FIN;
+        print <FIN>;
+    } elsif ($dataset eq "UMLS_JET") {
+        print "Content-type: application/octet-stream\n";
+        print "Accept-Ranges: bytes\n";
+        print "Content-Length: $UMLS_JET_size\n";
+        print "Content-disposition: filename=JET_strings.zip\n\n";
+
+        open(FIN, $UMLS_JET_file);
+        binmode FIN;
+        print <FIN>;
+    }
 } else {
     $q = new CGI;
-    print $q->redirect('index.html?status=LoginError')
+    print $q->redirect('index.html?status=LoginError&dataset='.$dataset)
 }
