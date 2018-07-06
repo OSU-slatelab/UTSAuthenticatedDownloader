@@ -27,6 +27,10 @@ $(document).ready(function() {
         $('#dataset').text('the UMLS strings file for JET');
         $('#inp_dataset').val(dataset);
     }
+    else if (dataset == 'NLM_WSD_JET') {
+        $('#dataset').text('NLM-WSD files from JET experiments');
+        $('#inp_dataset').val(dataset);
+    }
     else if (dataset != '') {
         $('#dataset').text(dataset);
         $('#inp_dataset').val(dataset);

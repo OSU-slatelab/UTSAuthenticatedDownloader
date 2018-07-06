@@ -19,6 +19,9 @@ my $Pubmed_JET_size = -1;
 my $UMLS_JET_file = '<PLACEHOLDER>';
 my $UMLS_JET_size = -1;
 
+my $NLM_WSD_JET_file = '<PLACEHOLDER>';
+my $NLM_WSD_JET_size = -1;
+
 my $uname = param('username');
 my $passw = param('password');
 my $dataset = param('dataset');
@@ -59,6 +62,15 @@ if ($status eq "true") {
         print "Content-disposition: filename=JET_strings.zip\n\n";
 
         open(FIN, $UMLS_JET_file);
+        binmode FIN;
+        print <FIN>;
+    } elsif ($dataset eq "NLM_WSD_JET") {
+        print "Content-type: application/octet-stream\n";
+        print "Accept-Ranges: bytes\n";
+        print "Content-Length: $NLM_WSD_JET_size\n";
+        print "Content-disposition: filename=NLM_WSD_JET.zip\n\n";
+
+        open(FIN, $NLM_WSD_JET_file);
         binmode FIN;
         print <FIN>;
     }
