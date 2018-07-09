@@ -19,20 +19,22 @@ $(document).ready(function() {
     }
 
     dataset = query_params['dataset'];
-    if (dataset == 'Pubmed_JET') {
-        $('#dataset').text('JET embeddings');
-        $('#inp_dataset').val(dataset);
-    }
-    else if (dataset == 'UMLS_JET') {
-        $('#dataset').text('the UMLS strings file for JET');
-        $('#inp_dataset').val(dataset);
-    }
-    else if (dataset == 'NLM_WSD_JET') {
-        $('#dataset').text('NLM-WSD files from JET experiments');
-        $('#inp_dataset').val(dataset);
-    }
-    else if (dataset != '') {
-        $('#dataset').text(dataset);
+    if (dataset != '') {
+        if (dataset == 'Pubmed_JET') {
+            $('#dataset').text('JET embeddings');
+        }
+        else if (dataset == 'UMLS_JET') {
+            $('#dataset').text('the UMLS strings file for JET');
+        }
+        else if (dataset == 'NLM_WSD_JET') {
+            $('#dataset').text('NLM-WSD files from JET experiments');
+        }
+        else if (dataset == 'UMLS_2017AB_preferred_strings') {
+            $('#dataset').text('preferred strings for UMLS 2017AB CUIs');
+        }
+        else {
+            $('#dataset').text(dataset);
+        }
         $('#inp_dataset').val(dataset);
     }
 });

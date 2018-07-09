@@ -22,6 +22,9 @@ my $UMLS_JET_size = -1;
 my $NLM_WSD_JET_file = '<PLACEHOLDER>';
 my $NLM_WSD_JET_size = -1;
 
+my $UMLS_2017AB_preferred_strings_file = '<PLACEHOLDER>';
+my $UMLS_2017AB_preferred_strings_size = -1;
+
 my $uname = param('username');
 my $passw = param('password');
 my $dataset = param('dataset');
@@ -75,6 +78,15 @@ if ($credentials_valid) {
         print "Content-disposition: filename=NLM_WSD_JET.zip\n\n";
 
         open(FIN, $NLM_WSD_JET_file);
+        binmode FIN;
+        print <FIN>;
+    } elsif ($dataset eq "UMLS_2017AB_preferred_strings") {
+        print "Content-type: application/octet-stream\n";
+        print "Accept-Ranges: bytes\n";
+        print "Content-Length: $UMLS_2017AB_preferred_strings_size\n";
+        print "Content-disposition: filename=UMLS_2017AB_preferred_strings.zip\n\n";
+
+        open(FIN, $UMLS_2017AB_preferred_strings_file);
         binmode FIN;
         print <FIN>;
     }
