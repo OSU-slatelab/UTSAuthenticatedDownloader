@@ -26,17 +26,21 @@ my $uname = param('username');
 my $passw = param('password');
 my $dataset = param('dataset');
 
-$ua = LWP::UserAgent->new;
-my $req = POST 'https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser',
-[ licenseCode => $UTS_API_license_key, user => param("username"), password => param("password") ];
-
+# request a new Ticket-Granting Ticket (TGT),
+# using the supplied username and password
+my $ua = LWP::UserAgent->new;
+my $req = POST 'https://utslogin.nlm.nih.gov/cas/v1/api-key',
+[ username => $uname, password => $passw ];
 my $response = $ua->request($req);
 my $status = $response -> content;
 
-$status = (split(/\>/, $status))[-1];
-$status = (split(/\</, $status))[0];
+# check if the credentials were rejected
+my $credentials_valid = 1;
+if ($status =~ /AccountNotFoundException/) {
+    $credentials_valid = 0;
+}
 
-if ($status eq "true") {
+if ($credentials_valid) {
     if ($dataset eq "BMASS") {
         print "Content-type: application/octet-stream\n";
         print "Accept-Ranges: bytes\n";
